@@ -52,6 +52,7 @@ bool MemoryCacheUnit::access(uint32_t address) {
         // case hit
         this->num_of_hits++;
 #ifdef PRINT_AFTER_ACCESS
+        printf("Address: %#08x/%u: Hit!\n", address, address);
         this->print_cache();
 #endif
         return true;
@@ -61,6 +62,7 @@ bool MemoryCacheUnit::access(uint32_t address) {
         this->cache_entries[index].set_tag(tag);
         this->cache_entries[index].set_valid(true);
 #ifdef PRINT_AFTER_ACCESS
+        printf("Address: %#08x/%u: Miss!\n", address, address);
         this->print_cache();
 #endif
         return false;
@@ -80,16 +82,16 @@ void MemoryCacheUnit::print_cache() {
          this->get_num_of_accesses() << endl;
 
     // Print table
-    printf("|--------|--------|--------|\n"
-           "| Index  | Tag    | Valid  |\n"
-           "|--------|--------|--------|\n");
+    printf("|------------|------------|--------|\n"
+           "| Index      | Tag        | Valid  |\n"
+           "|------------|------------|--------|\n");
     for (int index = 0; index < this->get_num_of_blocks(); ++index) {
         printf(
-                "|%#7x |%#7x | %-7s|\n",
+                "|%#11x |%#11x | %-7s|\n",
                 index,
                 this->cache_entries[index].get_tag(),
                 this->cache_entries[index].is_valid() ? "true" : "false"
         );
     }
-    printf("|--------|--------|--------|\n\n");
+    printf("|------------|------------|--------|\n\n");
 }
