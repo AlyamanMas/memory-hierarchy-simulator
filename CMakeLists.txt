@@ -7,4 +7,6 @@ add_executable(memory_hierarchy_simulator main.cpp
         MemoryCacheEntry.cpp
         MemoryCacheEntry.h
         MemoryCacheUnit.cpp
-        MemoryCacheUnit.h)
+        MemoryCacheUnit.h
+        utils.h
+        utils.cpp)
