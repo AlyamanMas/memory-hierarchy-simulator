@@ -1,25 +1,35 @@
 #include <iostream>
 
 #include "MemoryCacheUnit.h"
+#include "utils.h"
 
 using namespace std;
 
 int main() {
-    const auto l1_cache = make_unique<MemoryCacheUnit>(4, 1024, 10);
-//    l1_cache->access(0);
-//    l1_cache->access(4);
-//    l1_cache->access(8);
-//    l1_cache->access(12);
-//    l1_cache->access(16);
-//    l1_cache->access(0x1000);
-    const auto cache_from_slides = make_unique<MemoryCacheUnit>(1, 8, 10);
-    cache_from_slides->access(22);
-    cache_from_slides->access(26);
-    cache_from_slides->access(22);
-    cache_from_slides->access(26);
-    cache_from_slides->access(16);
-    cache_from_slides->access(3);
-    cache_from_slides->access(16);
-    cache_from_slides->access(18);
+    cout << "Please enter the total cache size in bytes: ";
+    uint32_t cache_size;
+    cin >> cache_size;
+
+    cout << "Please enter the cache line/block size in bytes: ";
+    uint32_t block_size;
+    cin >> block_size;
+
+    cout << "Please enter the number of cycles to access the cache: ";
+    uint32_t cycles_to_access;
+    cin >> cycles_to_access;
+
+    const auto cache_from_slides = make_unique<MemoryCacheUnit>(block_size, cache_size, cycles_to_access);
+
+    cout << "Please enter the full path of the file you want to get the sequence from: ";
+    string file_name;
+    cin >> file_name;
+
+    cout << "Please enter the base of the addresses in the file: ";
+    // Make the base 16 bits because if it's 8 bits, cin treats it as a character
+    uint16_t base;
+    cin >> base;
+
+    auto addresses_sequence = read_seq(file_name, base);
+    access_sequence(*cache_from_slides, addresses_sequence);
     return 0;
 }
