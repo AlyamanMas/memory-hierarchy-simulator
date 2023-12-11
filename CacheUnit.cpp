@@ -13,7 +13,7 @@ CacheUnit::CacheUnit(uint32_t block_size, uint32_t cache_size, uint32_t cycles_t
           num_of_hits(0),
           num_of_misses(0) {
     for (int i = 0; i < this->num_of_blocks; ++i) {
-        this->cache_entries.emplace_back(block_size);
+        this->cache_entries.emplace_back();
     }
 }
 

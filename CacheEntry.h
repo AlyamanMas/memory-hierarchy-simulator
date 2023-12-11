@@ -8,7 +8,7 @@ private:
     bool valid;
     uint32_t tag;
 public:
-    explicit CacheEntry(uint32_t block_size) : valid(false), tag(0) {};
+    explicit CacheEntry() : valid(false), tag(0) {};
 
     void set_tag(uint32_t tag);
 
