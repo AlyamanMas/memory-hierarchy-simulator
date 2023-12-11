@@ -4,9 +4,9 @@
 #include <vector>
 #include <cstdint>
 
-#include "MemoryCacheUnit.h"
+#include "CacheUnit.h"
 
-void access_sequence(MemoryCacheUnit &cache, std::vector<uint32_t> &addresses_sequence);
+void access_sequence(CacheUnit &cache, std::vector<uint32_t> &addresses_sequence);
 
 std::vector<uint32_t> read_seq(const std::string& file_name, uint8_t base = 10);
 

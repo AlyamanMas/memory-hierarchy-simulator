@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "MemoryCacheUnit.h"
+#include "CacheUnit.h"
 #include "utils.h"
 
 using namespace std;
@@ -18,7 +18,7 @@ int main() {
     uint32_t cycles_to_access;
     cin >> cycles_to_access;
 
-    const auto cache_from_slides = make_unique<MemoryCacheUnit>(block_size, cache_size, cycles_to_access);
+    const auto cache_from_slides = make_unique<CacheUnit>(block_size, cache_size, cycles_to_access);
 
     cout << "Please enter the full path of the file you want to get the sequence from: ";
     string file_name;

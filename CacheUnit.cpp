@@ -1,4 +1,4 @@
-#include "MemoryCacheUnit.h"
+#include "CacheUnit.h"
 
 #include <memory>
 #include <cmath>
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-MemoryCacheUnit::MemoryCacheUnit(uint32_t block_size, uint32_t cache_size, uint32_t cycles_to_access)
+CacheUnit::CacheUnit(uint32_t block_size, uint32_t cache_size, uint32_t cycles_to_access)
         : block_size(block_size),
           num_of_blocks(cache_size / block_size),
           cycles_if_hit(cycles_to_access),
@@ -17,31 +17,31 @@ MemoryCacheUnit::MemoryCacheUnit(uint32_t block_size, uint32_t cache_size, uint3
     }
 }
 
-uint32_t MemoryCacheUnit::get_block_size() const {
+uint32_t CacheUnit::get_block_size() const {
     return this->block_size;
 }
 
-uint32_t MemoryCacheUnit::get_num_of_blocks() const {
+uint32_t CacheUnit::get_num_of_blocks() const {
     return this->num_of_blocks;
 }
 
-uint32_t MemoryCacheUnit::get_cycles_if_hit() const {
+uint32_t CacheUnit::get_cycles_if_hit() const {
     return this->cycles_if_hit;
 }
 
-uint32_t MemoryCacheUnit::get_num_of_hits() const {
+uint32_t CacheUnit::get_num_of_hits() const {
     return this->num_of_hits;
 }
 
-uint32_t MemoryCacheUnit::get_num_of_misses() const {
+uint32_t CacheUnit::get_num_of_misses() const {
     return this->num_of_misses;
 }
 
-uint32_t MemoryCacheUnit::get_num_of_accesses() const {
+uint32_t CacheUnit::get_num_of_accesses() const {
     return this->num_of_hits + this->num_of_misses;
 }
 
-bool MemoryCacheUnit::access(uint32_t address) {
+bool CacheUnit::access(uint32_t address) {
     uint8_t display_width = floor(log2(this->block_size));
     uint8_t index_width = floor(log2(this->num_of_blocks));
 
@@ -69,7 +69,7 @@ bool MemoryCacheUnit::access(uint32_t address) {
     }
 }
 
-void MemoryCacheUnit::print_cache() {
+void CacheUnit::print_cache() {
     // Print some info
     cout << "Total number of accesses: " << this->get_num_of_accesses() << endl;
     cout << "Number of hits: " << this->get_num_of_hits() << endl;

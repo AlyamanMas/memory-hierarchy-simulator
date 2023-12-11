@@ -1,5 +1,5 @@
-#ifndef MEMORY_HIERARCHY_SIMULATOR_MEMORYCACHEUNIT_H
-#define MEMORY_HIERARCHY_SIMULATOR_MEMORYCACHEUNIT_H
+#ifndef MEMORY_HIERARCHY_SIMULATOR_CACHEUNIT_H
+#define MEMORY_HIERARCHY_SIMULATOR_CACHEUNIT_H
 
 #define MEMORY_ADDRESS_BITS 24
 #define MAIN_MEMORY_CYCLES_TO_ACCESS 120
@@ -10,18 +10,18 @@
 #include <optional>
 #include <memory>
 
-#include "MemoryCacheEntry.h"
+#include "CacheEntry.h"
 
-class MemoryCacheUnit {
+class CacheUnit {
 private:
-    std::vector<MemoryCacheEntry> cache_entries;
+    std::vector<CacheEntry> cache_entries;
     uint32_t block_size;
     uint32_t num_of_blocks;
     uint32_t cycles_if_hit;
     uint32_t num_of_hits;
     uint32_t num_of_misses;
 public:
-    MemoryCacheUnit(uint32_t block_size, uint32_t cache_size, uint32_t cycles_to_access);
+    CacheUnit(uint32_t block_size, uint32_t cache_size, uint32_t cycles_to_access);
 
     [[nodiscard]] uint32_t get_block_size() const;
 
@@ -40,4 +40,4 @@ public:
     void print_cache();
 };
 
-#endif //MEMORY_HIERARCHY_SIMULATOR_MEMORYCACHEUNIT_H
+#endif //MEMORY_HIERARCHY_SIMULATOR_CACHEUNIT_H

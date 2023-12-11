@@ -3,7 +3,7 @@
 #include <fstream>
 #include <cstdint>
 
-void access_sequence(MemoryCacheUnit &cache, std::vector <uint32_t> &addresses_sequence) {
+void access_sequence(CacheUnit &cache, std::vector <uint32_t> &addresses_sequence) {
     for (const auto &address : addresses_sequence) {
         cache.access(address);
     }
